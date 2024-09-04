@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import bank from "../assets/pngtree-debit-card-payment-png-image_5705181.jpeg";
-import { useContext, useState } from "react";
 import { login } from "../api/auth";
-import { useMutation } from "react";
-import UserContext from "react";
+import { useMutation } from "@tanstack/react-query";
+import UserContext from "../context/UserContext";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
