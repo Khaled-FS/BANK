@@ -43,7 +43,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   <NavLink
-                    to="/"
+                    to="/Home"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Home
@@ -51,7 +51,7 @@ const Navbar = () => {
 
                   <NavLink
                     onClick={handleLogOut}
-                    to="/login"
+                    to="/"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     log out
@@ -60,7 +60,7 @@ const Navbar = () => {
               ) : (
                 <>
                   <NavLink
-                    to="/login"
+                    to="/"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Login
