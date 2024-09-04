@@ -22,7 +22,7 @@ const Login = () => {
     },
   });
   if (user) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/Home"} />;
   }
 
   const handleFormSubmit = (e) => {
