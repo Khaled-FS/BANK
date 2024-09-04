@@ -17,7 +17,7 @@
 // export default App;
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./component/Navbar";
 import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
 import { checkToken } from "./api/storage";

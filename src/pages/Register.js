@@ -22,7 +22,7 @@ const Registration = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Add register logic here
+
     handlesignUp();
   };
 
