@@ -18,11 +18,11 @@ const Registration = () => {
   const { mutate: handlesignUp } = useMutation({
     mutationKey: ["Register"],
     mutationFn: () => register(userInfo),
-    onSuccess: setUser(true),
+    // onSuccess: setUser(true),
   });
-  if (user) {
-    return <Navigate to={"/login"} />;
-  }
+  // if (user) {
+  //   return <Navigate to={"/login"} />;
+  // }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
