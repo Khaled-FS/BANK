@@ -3,6 +3,7 @@ import bank from "../assets/pngtree-debit-card-payment-png-image_5705181.jpeg";
 import { login } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
 import UserContext from "../context/UserContext";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -20,6 +21,9 @@ const Login = () => {
       setUser(true);
     },
   });
+  if (user) {
+    return <Navigate to={"/"} />;
+  }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +60,9 @@ const Login = () => {
               />
             </div>
             <div className="m-10">
-              <button className="border ">login</button>
+              <button type="submit" className="border ">
+                login
+              </button>
             </div>
           </div>
         </form>

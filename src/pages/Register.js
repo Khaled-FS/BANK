@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import bank from "../assets/pngtree-debit-card-payment-png-image_5705181.jpeg";
 import { useMutation } from "@tanstack/react-query";
 import { register } from "../api/auth";
+import UserContext from "../context/UserContext";
+import { Navigate } from "react-router-dom";
 const Registration = () => {
   const [userInfo, setUserInfo] = useState({});
-
+  const [user, setUser] = useContext(UserContext);
   const handleChange = (e) => {
     if (e.target.name === "image") {
       setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
@@ -15,10 +17,12 @@ const Registration = () => {
 
   const { mutate: handlesignUp } = useMutation({
     mutationKey: ["Register"],
-    mutationFn: () => {
-      register(userInfo);
-    },
+    mutationFn: () => register(userInfo),
+    // onSuccess: setUser(true),
   });
+  // if (user) {
+  //   return <Navigate to={"/login"} />;
+  // }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -40,12 +44,12 @@ const Registration = () => {
                 htmlFor="name"
                 className="block text-white text-sm font-medium mb-2"
               >
-                User name
+                username
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="username"
+                name="username"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
