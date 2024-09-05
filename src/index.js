@@ -27,6 +27,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Profile from "./pages/Profile";
+import TransactionsPage from "./pages/TransactionsPage";
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/Transactions",
+        element: <TransactionsPage />,
       },
       {
         path: "/profile",
