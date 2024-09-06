@@ -8,9 +8,7 @@ const MyBalance = () => {
   });
   return (
     <div>
-      <lu>
-        <li className="text-2xl font-semibold text-center">{user?.balance}$</li>
-      </lu>
+      <h1 className="text-2xl font-semibold text-center">{`My balance ${user?.balance}$`}</h1>
     </div>
   );
 };
