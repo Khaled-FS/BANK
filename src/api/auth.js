@@ -1,3 +1,4 @@
+import { Await } from "react-router-dom";
 import instance from ".";
 import { setToken } from "./storage";
 
@@ -36,4 +37,15 @@ const myTransaction = async () => {
   return data;
 };
 
-export { login, register, me, getAllUsers, myTransaction };
+const transfers = async (amount, username) => {
+  const { data } = await instance.put(
+    `/mini-project/api/transactions/transfer/${username}`,
+    {
+      usename: username,
+      amount: amount,
+    }
+  );
+  return data;
+};
+
+export { login, register, me, getAllUsers, myTransaction, transfers };

@@ -9,7 +9,7 @@ const Profile = () => {
   });
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <img
           src={`https://react-bank-project.eapi.joincoded.com/${user?.image}`}
