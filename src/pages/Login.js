@@ -21,6 +21,7 @@ const Login = () => {
       setUser(true);
     },
   });
+
   if (user) {
     return <Navigate to={"/Home"} />;
   }

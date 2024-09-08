@@ -37,6 +37,15 @@ const myTransaction = async () => {
   return data;
 };
 
+const deposit = async (amount, type) => {
+  const { data } = await instance.put(`mini-project/api/transactions/${type}`, {
+    amount: amount,
+  });
+  return data;
+};
+
+
+
 const transfers = async (amount, username) => {
   const { data } = await instance.put(
     `/mini-project/api/transactions/transfer/${username}`,
@@ -48,4 +57,5 @@ const transfers = async (amount, username) => {
   return data;
 };
 
-export { login, register, me, getAllUsers, myTransaction, transfers };
+export { login, deposit, register, me, getAllUsers, myTransaction, transfers };
+
