@@ -5,7 +5,7 @@ import { transfers } from "../api/auth";
 
 const UserItem = ({ user }) => {
   // usestate
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   // handleChange
 
   // useMuation
@@ -16,6 +16,7 @@ const UserItem = ({ user }) => {
     mutationFn: () => transfers(amount, user.username),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
+      setAmount("");
     },
   });
 
@@ -45,6 +46,7 @@ const UserItem = ({ user }) => {
             type="number"
             id="amount"
             name="username"
+            value={amount}
             onChange={(e) => {
               setAmount(e.target.value);
             }}
