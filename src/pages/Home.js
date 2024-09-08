@@ -1,5 +1,7 @@
 import React from "react";
 import MyBalance from "../component/MyBalance";
+import Buttons from "../component/Buttons";
+import DepositPage from "../component/DepositPage.js";
 
 const Home = () => {
   return (
@@ -8,6 +10,13 @@ const Home = () => {
         <h1 className="text-6xl font-bold mb-8">
           <MyBalance />
         </h1>
+      </div>
+      <div className="flex">
+        <h1>withdrow</h1>
+        <div>
+          <DepositPage />
+        </div>
+        <h2> deposet</h2>
       </div>
     </div>
   );
