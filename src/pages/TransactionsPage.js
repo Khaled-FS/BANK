@@ -7,7 +7,8 @@ import User from "./Users";
 export const TransactionsPage = () => {
   const [query, setQuery] = useState("");
   const [type, setType] = useState("");
-
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
   const { data: Transactions, isPending } = useQuery({
     queryKey: ["myTransaction"],
     queryFn: myTransaction,
@@ -22,8 +23,22 @@ export const TransactionsPage = () => {
     console.log(Transactions);
   }
   const transactionsList = Transactions?.filter((transaction) => {
-    return transaction.amount && transaction.amount.toString().includes(query);
+    if (to != "" && from != "") {
+      if (
+        toNormaldate(from) <= toNormaldate(transaction.createdAt) &&
+        toNormaldate(transaction.createdAt) <= toNormaldate(to)
+      ) {
+        return true;
+      }
+    } else {
+      return true;
+    }
   })
+    .filter((transaction) => {
+      return (
+        transaction.amount && transaction.amount.toString().includes(query)
+      );
+    })
     .filter((transaction) => {
       return transaction.type.includes(type);
     })
@@ -31,17 +46,6 @@ export const TransactionsPage = () => {
       return (
         <li key={item._id} className="border-b p-4">
           <div>
-            {/* <p className="uppercase font-bold">{item.type}</p> */}
-            {/* <p
-              className={`uppercase font-bold ${
-                item.type === "withdraw"
-                  ? "text-red-500"
-                  : item.type === "deposit"
-                  ? "text-green-500"
-                  : ""
-              }`}
-            > */}
-
             <p
               className={`uppercase font-bold ${
                 item.type === "withdraw"
@@ -53,7 +57,6 @@ export const TransactionsPage = () => {
                   : ""
               }`}
             >
-              {/* Conditionally render the transaction type text */}
               {item.type === "withdraw"
                 ? "Withdraw"
                 : item.type === "deposit"
@@ -66,19 +69,20 @@ export const TransactionsPage = () => {
 
             <p>{toNormaldate(item.createdAt)}</p>
             <p>Amount: ${item.amount}</p>
-            {/*{item.type} ,{item.amount},{item.updatedAt},
-
-      ,today.toDateString(); */}
           </div>
         </li>
       );
     });
-
+  const handleFrom = (e) => {
+    setFrom(e.target.value);
+  };
+  const handleTo = (e) => {
+    setTo(e.target.value);
+  };
   const handleQuery = (e) => {
     setQuery(e.target.value);
   };
   const handleType = (e) => {
-    console.log(e.target.value);
     setType(e.target.value);
   };
   return (
@@ -100,6 +104,8 @@ export const TransactionsPage = () => {
           <option value="withdraw">withdraw</option>
           <option value="deposit">deposit</option>
         </select>
+        <input type="date" onChange={handleFrom} />
+        <input type="date" onChange={handleTo} />
         <button>search</button>
         <div className="flex  flex-col flex-wrap gap-3 ">
           {transactionsList}
