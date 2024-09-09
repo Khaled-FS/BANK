@@ -15,9 +15,13 @@ export const TransactionsPage = () => {
   });
   function toNormaldate(time) {
     const date = new Date(time);
-    const formattedDate = date.toLocaleString(); // e.g., "9/5/2024, 6:39:38 PM" in US locale
-    console.log(formattedDate);
-    return formattedDate;
+    const formattedDate = date.toLocaleString("en-US");
+    // e.g., "9/5/2024, 6:39:38 PM" in US locale
+    console.log(
+      "formatted",
+      formattedDate.slice(0, formattedDate.indexOf(","))
+    );
+    return formattedDate.slice(0, formattedDate.indexOf(","));
   }
   if (!isPending) {
     console.log(Transactions);

@@ -25,7 +25,7 @@ const UserItem = ({ user }) => {
   return (
     <div
       key={user.id}
-      className="bg-gray-700 p-6 rounded-md flex flex-col items-center justify-center"
+      className="border-2 p-6 rounded-md flex flex-col items-center justify-center"
     >
       <img
         src={`https://react-bank-project.eapi.joincoded.com/${user.image}`}
@@ -33,23 +33,21 @@ const UserItem = ({ user }) => {
         className="w-24 h-24 rounded-full mb-4"
       />
       <div className="text-center">
-        <h3 className="text-lg text-white font-semibold mb-2">
-          {user.username}
-        </h3>
+        <h3 className="text-lg  font-semibold mb-2">{user.username}</h3>
       </div>
       <div className="text-center">
-        <h3 className="text-lg text-white font-semibold mb-2">
-          {user.balance}
-        </h3>
+        <h3 className="text-lg  font-semibold mb-2">{user.balance}</h3>
         <div>
           <input
             type="number"
             id="amount"
             name="username"
+            placeholder="Amount"
             value={amount}
             onChange={(e) => {
               setAmount(e.target.value);
             }}
+            className="border-2"
           />
 
           <button
