@@ -7,8 +7,13 @@ const MyBalance = () => {
     queryFn: me,
   });
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-center">{`My balance ${user?.balance}$`}</h1>
+    // <div className="flex flex-col">
+    //   <h1 className="text-2xl font-semibold text-center">{`My balance ${user?.balance}$`}</h1>
+    // </div>
+    <div className="flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-semibold text-center">
+        {`My balance: ${user?.balance}$`}
+      </h1>
     </div>
   );
 };
