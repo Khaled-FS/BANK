@@ -32,7 +32,7 @@ export const TransactionsPage = () => {
         <li key={item._id} className="border-b p-4">
           <div>
             {/* <p className="uppercase font-bold">{item.type}</p> */}
-            <p
+            {/* <p
               className={`uppercase font-bold ${
                 item.type === "withdraw"
                   ? "text-red-500"
@@ -40,9 +40,29 @@ export const TransactionsPage = () => {
                   ? "text-green-500"
                   : ""
               }`}
+            > */}
+
+            <p
+              className={`uppercase font-bold ${
+                item.type === "withdraw"
+                  ? "text-red-500"
+                  : item.type === "deposit"
+                  ? "text-green-500"
+                  : item.type === "transfer"
+                  ? "text-black"
+                  : ""
+              }`}
             >
-              {item.type === "withdraw" ? "Withdraw" : "Deposit"}
+              {/* Conditionally render the transaction type text */}
+              {item.type === "withdraw"
+                ? "Withdraw"
+                : item.type === "deposit"
+                ? "Deposit"
+                : item.type === "transfer"
+                ? "Transfer"
+                : ""}
             </p>
+            <p>{item.type === "withdraw" ? "Withdraw" : "Deposit"}</p>
 
             <p>{toNormaldate(item.createdAt)}</p>
             <p>Amount: ${item.amount}</p>
