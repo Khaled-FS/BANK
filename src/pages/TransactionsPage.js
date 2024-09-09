@@ -31,7 +31,19 @@ export const TransactionsPage = () => {
       return (
         <li key={item._id} className="border-b p-4">
           <div>
-            <p className="uppercase font-bold">{item.type}</p>
+            {/* <p className="uppercase font-bold">{item.type}</p> */}
+            <p
+              className={`uppercase font-bold ${
+                item.type === "withdraw"
+                  ? "text-red-500"
+                  : item.type === "deposit"
+                  ? "text-green-500"
+                  : ""
+              }`}
+            >
+              {item.type === "withdraw" ? "Withdraw" : "Deposit"}
+            </p>
+
             <p>{toNormaldate(item.createdAt)}</p>
             <p>Amount: ${item.amount}</p>
             {/*{item.type} ,{item.amount},{item.updatedAt},
