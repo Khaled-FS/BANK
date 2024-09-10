@@ -4,7 +4,7 @@ import { login } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
 import UserContext from "../context/UserContext";
 import { Navigate } from "react-router-dom";
-
+import C2C from "../assets/C2C.png";
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
 
@@ -32,17 +32,32 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-400 ">
-      <div className="border flex items-center justify-center h-96 space-x-40 h-dvh">
-        <div>
-          <img className="" src={bank} alt="bank logo" />
+    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-8">
+      <div className="flex items-center justify-center h-96 space-x-48">
+        {" "}
+        {/* Increased space-x for more gap */}
+        <div className="flex-shrink-0">
+          <img
+            className="h-32 w-auto" // Increased height for a larger image
+            src={C2C}
+            alt="bank logo"
+          />
         </div>
-        <form onSubmit={handleFormSubmit}>
-          <div>
-            <h1>Login</h1>
+        <form onSubmit={handleFormSubmit} className="w-full max-w-sm">
+          {" "}
+          {/* Constrain form width */}
+          <div className="space-y-6">
+            {" "}
+            {/* Increased space between form elements */}
+            <h1 className="text-2xl font-bold text-center px-4 py-2">
+              {" "}
+              {/* Adjusted text size */}
+              Login
+            </h1>
             <div>
-              <p>Username</p>
+              <p className="mb-2">Username</p> {/* Increased margin-bottom */}
               <input
+                className="text-black w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="text"
                 id="username"
                 name="username"
@@ -51,8 +66,9 @@ const Login = () => {
               />
             </div>
             <div>
-              <p>Password</p>
+              <p className="mb-2">Password</p> {/* Increased margin-bottom */}
               <input
+                className=" w-full text-black px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="password"
                 id="password"
                 name="password"
@@ -60,9 +76,12 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="m-10">
-              <button type="submit" className="border ">
-                login
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+              >
+                Login
               </button>
             </div>
           </div>

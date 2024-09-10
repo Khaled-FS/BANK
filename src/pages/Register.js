@@ -4,6 +4,9 @@ import { useMutation } from "@tanstack/react-query";
 import { register } from "../api/auth";
 import UserContext from "../context/UserContext";
 import { Navigate } from "react-router-dom";
+
+import C2C from "../assets/C2C.png";
+
 const Registration = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext);
@@ -31,10 +34,10 @@ const Registration = () => {
   };
 
   return (
-    <div className="bg-gray-400">
-      <div className="border flex items-center justify-center h-96 space-x-40">
-        <div>
-          <img src={bank} alt="bank logo" />
+    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-8">
+      <div className=" flex items-center justify-center h-96 space-x-40">
+        <div className="flex-shrink-0">
+          <img className="h-32 w-auto" src={C2C} alt="bank logo" />
         </div>
         <div>
           <h1>register</h1>
@@ -51,7 +54,7 @@ const Registration = () => {
                 id="username"
                 name="username"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-black w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -68,7 +71,7 @@ const Registration = () => {
                 id="password"
                 name="password"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=" text-black w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -84,7 +87,7 @@ const Registration = () => {
                 id="image"
                 name="image"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                className="text-black w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                 required
               />
             </div>

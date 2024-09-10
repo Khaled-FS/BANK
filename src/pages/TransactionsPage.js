@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { myTransaction } from "../api/auth";
-import UserItem from "./UserItem";
-import User from "./Users";
 
 export const TransactionsPage = () => {
   const [query, setQuery] = useState("");
@@ -57,7 +55,7 @@ export const TransactionsPage = () => {
                   : item.type === "deposit"
                   ? "text-green-500"
                   : item.type === "transfer"
-                  ? "text-black"
+                  ? "text-blue-500"
                   : ""
               }`}
             >
@@ -71,7 +69,7 @@ export const TransactionsPage = () => {
             </p>
             <p>{item.type === "withdraw" ? "Withdraw" : "Deposit"}</p>
 
-            <p>{toNormaldate(item.createdAt)}</p>
+            <p>Date:{toNormaldate(item.createdAt)}</p>
             <p>Amount: ${item.amount}</p>
           </div>
         </li>
@@ -89,31 +87,95 @@ export const TransactionsPage = () => {
   const handleType = (e) => {
     setType(e.target.value);
   };
+
   return (
-    <div className="flex justify-center items-center h-1/2">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
-        <input
-          onChange={handleQuery}
-          type="search"
-          className="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-        <select className="form-select" onChange={handleType}>
-          <option value="" selected>
-            All
-          </option>
-          <option value="transfer">transfer</option>
-          <option value="withdraw">withdraw</option>
-          <option value="deposit">deposit</option>
-        </select>
-        <input type="date" onChange={handleFrom} />
-        <input type="date" onChange={handleTo} />
-        <button>search</button>
-        <div className="flex  flex-col flex-wrap gap-3 ">
-          {transactionsList}
+    //     <div className="bg-gray-900  text-white min-h-screen flex flex-col items-center justify-center p-8">
+    //       <div className="bg-gray-800  p-6 rounded-lg shadow-lg">
+    //         <input
+    //           onChange={handleQuery}
+    //           type="number"
+    //           className="form-control rounded text-black"
+    //           placeholder="Search"
+    //           aria-label="Search"
+    //           aria-describedby="search-addon"
+    //         />
+    //         <select className="form-select text-black " onChange={handleType}>
+    //           <option className="form-select text-black" value="" selected>
+    //             All
+    //           </option>
+    //           <option
+    //             className="form-select rounded-lg shadow-lg text-black"
+    //             value="transfer"
+    //           >
+    //             transfer
+    //           </option>
+    //           <option value="withdraw">withdraw</option>
+    //           <option value="deposit">deposit</option>
+    //         </select>
+    //         <input
+    //           className=" rounded-lg shadow-lg
+    // text-black"
+    //           type="date"
+    //           onChange={handleFrom}
+    //         />
+    //         <input
+    //           className=" rounded-lg shadow-lg
+    // text-black"
+    //           type="date"
+    //           onChange={handleTo}
+    //         />
+    //         <button>search</button>
+    //         <div className="flex  flex-col flex-wrap gap-3 ">
+    //           {transactionsList}
+    //         </div>
+    //       </div>
+    //     </div>
+
+    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-8">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-lg">
+        {" "}
+        {/* Adjusted padding and max-width */}
+        <h1 className="text-2xl font-semibold mb-6 text-center">
+          Search Transactions
+        </h1>
+        <div className="space-y-4">
+          {" "}
+          {/* Space between form elements */}
+          <input
+            onChange={handleQuery}
+            type="number"
+            className="w-full px-4 py-2 border border-gray-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <select
+            className="w-full px-4 py-2 border border-gray-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={handleType}
+          >
+            <option value="" selected>
+              All
+            </option>
+            <option value="transfer">Transfer</option>
+            <option value="withdraw">Withdraw</option>
+            <option value="deposit">Deposit</option>
+          </select>
+          <div className="flex space-x-4">
+            {" "}
+            {/* Flex container for date inputs */}
+            <input
+              className="w-full px-4 py-2 border border-gray-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="date"
+              onChange={handleFrom}
+            />
+            <input
+              className="w-full px-4 py-2 border border-gray-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="date"
+              onChange={handleTo}
+            />
+          </div>
         </div>
+        <div className="mt-6 flex flex-col gap-4">{transactionsList}</div>
       </div>
     </div>
   );
